@@ -1,2 +1,12 @@
 # CEHv10StudyGuide
-Certified Ethical Hacker
+
+# Welcome to the **Certified Ethical Hacking StudyGuideWiki**!!
+
+![CEH](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYRwpxNVlrDwzk96RJE0T17mE4rvY28mxpUg&usqp=CAU)
+
+Here you can find some resumes from EC-Council’s Certified Ethical Hacking 312-50 exam. Based on [CEH v10: EC-Council Certified Ethical
+Hacker Complete Training Guide with Practice Labs](https://www.amazon.es/CEH-v10-EC-Council-Certified-Questions/dp/172379841X) and in the [repo](https://github.com/scottymcraig/CEHv10StudyGuide) from Scott Craig 
+
+Pd.: sorry for my bad English
+
+The most important content of this repo is on the [WIKI](https://github.com/drj3ky11/CEHv10StudyGuide/wiki)
