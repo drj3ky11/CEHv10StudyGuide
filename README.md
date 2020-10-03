@@ -1,4 +1,4 @@
-# CEHv10S_WIKI
+# CEHv10_WIKI
 
 ### *One Wiki to rule them all one wiki to find them, one wiki to bring them all and in the darkness bind them.*
 
