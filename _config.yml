@@ -1,4 +1,3 @@
 theme: jekyll-theme-cayman
 description: Wiki under construction to study the Certified Ethical Hacker (CEH) from EC-Council v10
-include:
-- _site
+author: Dr. Jekyll
