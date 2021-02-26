@@ -1,0 +1,489 @@
+## 1.1 Technology Brief Information Security Overview
+Information security refers to the protection of information and systems. Information is the critical asset that an organization need to secure.
+The point is tray to protect the assets of an organization from unauthorized access and disclosures. Some of the most important data breach are the eBay data breach, Google Play Hack and The Home Depot Data Breach among others.
+
+### <u>Terms to Know</u>
+
+- **Hack value** - perceived value or worth of a target as seen by the attacker.
+- **Zero-day attack** - attack that occurs before a vendor knows or is able to patch a flaw.
+- **Vulnerability** - refers to a weak point, loophole or a cause in any system or network.
+- **Daisy Chaining** - is a sequential process of several hacking or attacking attempts to gain access to network or systems, one after another, using the same information and the information obtained from the previous attempt.
+- **Exploit** - is a breach of security of a system through Vulnerabilities, Zero-Day Attacks or any other hacking techniques.
+- **Doxing** - searching for and publishing information about an individual usually with a malicious intent.
+- **Payload** - is a section or part of a malicious and exploited code that causes the potentially harmful activity and actions such as exploit, opening backdoors, and hijacking.
+- **Bots** - are software that is used to control the target remotely and to
+execute predefined tasks. Frequently used as Spambots, Viruses, and Worms spreading, Botnets, DDoS attacks.
+- **Enterprise Information Security Architecture** (EISA) - process that determines how systems work within an organization.
+- **Incident management** - deals with specific incidents to mitigate the attack.
+- **Threat** - agent who can perform a damage.
+
+### <u> Elements of Information Security</u>
+
+- **Confidentiality** only authorized can see, access...
+- **Integrity** - no accesible or manipulated by unauthorized.
+- **Availability** - authorized shall have access whenever they want
+
+![CIA Triad](https://cdn.business2community.com/wp-content/uploads/2019/08/CIA-Triad-confidentiality-integrity-availability.png)
+
+- **Authenticity** identifies the user, or device to grant privileges, access and certain rules and policies.
+- **Non-Repudiation** the sender cannot deny from what he sent. Similarly, the receiver cannot deny from receiving.
+
+**Security, Functionality and Usability Triangle**
+In a System, Level of Security is a measure of the strength of the Security in the system, Functionality, and Usability. The tree components must be balanced, for example, some times high level of security means that the system becomes nonuser-friendly...
+
+## 1.2 Information Security Threats and Attack Vectors
+An atack depends on tree components: 
+
+    ATTACK = motive + method + vulnerability
+
+### <u>Top Information Security Attack Vectors</u>
+
+- **Cloud computing Threats** some threats that exist in the Cloud Security are data breachs, data losse and hijacking of acount over cloud services. Other are insecure APIs, denial of services, malicious insiders, poor security and multi-tenancy.
+- **Advanced Pesistent Threats** The APT process relies upon advanced, sophisticated techniques to exploit vulnerabilities within a system.
+- **Viruses and Worms** that is malicious software.Unlike Viruses, Worms are capable of replicating themselves.
+- **Ransomware** is a type of malware, which restricts access to the computer systems's files. They usually ask for a revard.
+- **Mobile Threats** The most common threat to mobile devices are: Data leakage, Unsecured Wi-Fi, Network Spoofing, Phishing Attacks, Spyware, Broken Cryptography and Improper Session Handling.
+- **Botnet** network of compromised systems used by attackers to do DDoS attacks
+- **Insider Attack** perdormed by a trusted person.
+- **Phising** ilegitimate email
+- **Web Application Threatas** like SQL injection, cross-site scripting...
+- **IoT Threats** remote access to the devices.
+
+### <u>Information Security Threat Categories</u>
+
+- **Network threats** The primary components of network infrastructure are routers, switches, and firewalls. Top network threats are: Information gathering, Sniffing & Eavesdropping, Spoofing, Session hijacking, Man-in-the-Middle Attack, DNS & ARP Poisoning, Password-based Attacks, Denial-of-Services Attacks, Compromised Key Attacks and Firewall & IDS Attacks.
+
+- **Host Threats** focused on system software. It includes: Malware Attacks, Footprinting, Password Attacks, Denial-of-Services Attacks, Arbitrary code execution, Unauthorized Access, Privilege Escalation, Backdoor Attacks and Physical Security Threats.
+
+- **Application Threats** Improber data/input validation, Authentication and authoritation attacks, security misconfiguration, error handling management, Information disclosure, hiden field amnipulation, broken overflow issues, cryptography attacks, sql injection, phishing
+
+### <u>Tipes of attack on a system</u>
+**Operating system attacks**. Some most common vulnerabilities of an operating system are:
+- *Buffer overflow* - code execution flaw. a program or application does not have well-defined boundaries.
+- *Bugs in the operating system* a mistake by the developer while developing the program code
+- *Unpatched system* -  systems that have not been patched
+
+Attacks perormed at the OS level include: exploting spcific network protocol implementations, attacking built-in autentication systems, breaking file-system security and cracking passwords and encryption mechanisms.
+
+**Misconfiguration attacks** - improperly configuring a service or application. Some times ussing the dafult configuration.
+
+
+**Aplication Levels attacks** Before releasing an application, the developer must perform a test & verify the security components. Some attacks are Buffer overflow, Active content, Cross-site script, DOS, SQL injection, Session hijacking and Phishing.
+
+**Shrink Wrap Code Attacks** To understand shrink wrap vulnerabilities, consider an operating system has a bug in its original software version. The vendor may have released the update, but it is the most critical time between the release of a patch by vendor till client’s systems updates.
+
+**Information Warfare** The term, “Information Warfare” or “Info War” describes the use of information and communication technology (ICT). The major reason or focus of this information war is to get a competitive advantage over the opponent or enemy. It is dividen (by Libicki) in *Comand and control warfare*, *intelligence-based warfare*, *electronic warfare*, *Psycological warfare*, *Hacker warfare*, *Economic warfare*, *Cyber warfares*.
+- *Defensive Information Warfare* Prevention, Deterrence, Indication & Warning, Detection, Emergency Preparedness and Response.
+- *Offensive Information Warfare* Offensive Information warfare prevents or modifies the information from being in use by considering integrity, availability, and confidentiality.
+
+## 1.3 Hacking Concepts, Types, and Phases
+
+**Definition of Hacker** Hacker is the one who is smart enough to steal the information such as Business data, personal data, financial information, credit card information, username & Password from the system he is unauthorized to get this information by taking unauthorized control over that system using different techniques and tools.
+
+**The Hats**
+
+- *White Hat* - ethical hackers
+- *Black Hat* - hackers that seek to perform malicious activities
+- *Gray Hat* - hackers that perform good or bad activities but do not have the permission of the organization they are hacking against.
+
+*Script Kiddies* - uskilled hackers that uses scripts or tools made by real hackers
+
+*Hacktivist* - someone who hacks for a cause
+
+*Suicide Hackers* - do not case about any impunity to themselves; hack to get the job done
+
+*Cyberterrorist* - motivated by religious or political beliefs to create fear or disruption
+
+*State-Sponsored Hacker* - hacker that is hired by a government
+
+![Hats](https://ipcisco.com/wp-content/uploads/2019/09/hacker-types-ipcisco.com_-1.png)
+
+### <u>Hacking Phases</u>
+
+1. **Reconnaissance**  - gathering evidence about targets
+- *Passive* - gathering information about the target without their knowledge
+- *Active* - uses tools and techniques that may or may not be discovered- 
+2. **Scanning & Enumeration** - obtaining more in-depth information about targets
+3. **Gaining Access** - attacks are leveled in order to gain access to a system
+4. **Maintaining Access** - items put in place to ensure future access
+5. **Covering Tracks** - steps taken to conceal success and intrusion
+
+## 1.4 Ethical Hacking Concepts and Scope
+
+Ethical hacking and penetration testing are common terms, popular in information security environment for a long time. Fundamental Challenges to these security experts are of finding weaknesses and deficiencies in running and upcoming systems, applications, software and addressing them proactively.
+
+Ethical hacking is widely used as penetration testing to identify the vulnerabilities, risk, and highlight the holes to take remedial actions against attacks. An organization must first know what it is looking for before hiring an external pentester. It helps focus the goals to  achieve and save time. The testing team dedicated in troubleshooting the actual problem in resolving the issues. The ethical hacker also helps to understand the security system of an
+organization better. It is up to the organization to take recommended actions by the Pentester and enforce security policies over the system and network. 
+
+### <u>Phases of Ethical Hacking</u>
+
+1. Footprinting & Reconnaissance
+2. Scanning
+3. Enumeration
+4. System Hacking
+5. Escalation of Privileges
+6. Covering Tracks
+
+### <u>Skills of an Ethical Hacker</u>
+
+**Technical Skills** 
+1. Depth knowledge of almost all operating systems
+2. Networking
+3. Strong command over security areas, related issues and technical domains.
+4. Detailed knowledge of older, advanced, sophisticated attacks.
+
+**Non Technical Skills**
+1. Learning ability
+2. Problem-solving skills
+3. Communication skills
+4. Committed to security policies
+5. Awareness of laws, standards, and regulations.
+
+## 1.5 Information Security Controls
+
+### <u>Information Assurance (IA)</u>
+
+It depends upon the components that are Integrity, Availability, Confidentiality, and Authenticity. Apart from these components, some methods and processes also help in the achievement of information assurance such as:
+
+- Policies and Processes.
+- Network Authentication.
+- User Authentication.
+- Network Vulnerabilities.
+- Identifying problems and resources.
+- Implementation of a plan for identified requirements.
+- Application of information assurance control.
+- Certification and Acreditation process of information systems
+- IA training to all personnel.
+
+### <u>Information Security Management Program</u>
+
+Information Security Management programs are the programs that are specially designed to focus on reducing the risk and vulnerabilities towards information security environment to train the organization and users to work in the less vulnerable state.
+
+The **Information Security Management framework** is a combiantion of well-defined policies, processes, proccedures, standards and guidelines neede to establish the required level of information security.
+
+### <u>Enterprise Information Security Architecture (EISA)</u>
+
+Enterprise Information Security Architecture is the combination of requirements and processes that help in determination, investigation, monitoring the structure of behavior of information system. The goals of EISA are:
+- Monitoring and detection of network behavior
+- Pay attention to various threats
+- Identify assets
+- Detection and recovery of security breaches
+- Cost effective
+- Risk assesments
+
+### <u>Network Security Zoning</u>
+
+Managing, deploying an architecture of an organization in different security zones is called Network Security Zoning. These security zones are the set of network devices having a specific security level.
+
+- Internet Zone
+- Internet DMZ
+- Porduction Network Zone
+- Intranet Zone
+- Management Network Zone
+
+**Defense in depth** security strategy with several protection layers.
+
+### <u>Information Security Policies</u>
+
+Fundamental security requirements, conditions, rules are configured to be enforced in an information security policy to secure the organization's resources.The objetives are: 
+- Cover Security requirements and conditions of the organization
+- Protect organizations resources
+- Eliminate legal liabilities
+- Minimize the wastage of resources
+- Prevent against unauthorized access / modification etc.
+- Minimize the risk
+- Information Assurance
+
+The **Human Resources** redepartment has the responsibility of making sure the organization is aware regarding security policies as well as providing sufficient training.
+
+**Physical Security** is always the top priority in securing anything. In Information Security, it is also considered important and regarded as the first layer of protection. Physical security includes protection against human-made attacks such as theft, damage, unauthorized physical access as well as environmental impacts such as rain, dust, power failure and fire.
+
+The steps to enforce Information Security:
+1. Risk assesments
+2. Gidelines
+3. Managemet
+4. Penalties
+5. Finalization
+6. Agreement
+7. Enforecement
+8. Training
+9. Review / Update
+
+### <u>Security Policies</u>
+
+The goals of security policies are maintain an outline for the management and administration fo network security, protect an organization's computing resources, eliminate legal liabilities arsing, prevent wstage of comany's computing resources, prevent unauthorized modifications of the data, to reduce risk, to differenciate the user's access rights and to protect confidentiality.
+
+- *Access Control* - what resources are protected and who can access them. *Mandatory* (MAC) access is set by an administrator; *Discretionary* (DAC) - allows users to give access to resources that they own and control.
+- *Information Security* - what can systems be used for
+- *Information Protection* - defines data sensitivity levels
+- *Password* - all things about passwords (how long, characters required, etc.)
+- *E-Mail* - proper and allowable use of email systems
+- *Information Audit* - defines the framework used for auditing
+
+
+### <u>Types of Security Policies</u>
+
+- **Promiscuous** - wide open
+- **Permissive** - blocks only known dangerous things
+- **Prudent** - blocks most and only allows things for business purposes
+- **Paranoid** - locks everything down
+
+### <u>Controls</u>
+
+- **Directive** - Also known as procedural controls because they deal with company procedures such as security policies, operations plans, and guidelines. 
+- **Deterrent** - Controls that are used to dissuade potential attackers, such as signs that warn possible attackers about the alarm system and monitoring in place.
+- **Preventive**  - Controls used to stop potential attacks by preventing users from performing specific actions, such as encryption and authentication
+- **Compensating** - Controls used to supplement directive controls, such as administrator reviewing logs files for violations of company policy
+- **Detective** -  Controls used to monitor and alert on malicious or unauthorized activity, such as IDS's and CCTV feeds monitored in real life
+- **Corrective** - Controls used to repair damage caused by malicious events. Such as AntiVirus software and IPS (IPS being both a detective and corrective control) 
+- **Recovery**
+
+- **Standards** - mandatory rules to achieve consistency
+
+- **Baselines** - provide the minimum security necessary
+
+- **Guidelines** - flexible or recommended actions
+
+- **Procedures** - step by step instructions
+
+### <u>Risk Management</u>
+
+**IMPORTANT FOR THE EXAM** the risk matrix
+
+Risk is a degree of uncertainty or expresion of potential damage that en adverse event may cause. 
+
+    Risk =THreat x Vulnerability x Impact
+
+The risk matrix scales the risk occurrence /likelihood probability along with its consecuences or impact. **Risk management** is the process of identifying, asseessing, response and implementing the activites, which control how the organization manages the potential effects. Its objectives are to identify the potential risks, the impacto, priorize risk, control and mitigation and create awareness among the security staff. THe four steps are:
+
+1. Risk identification
+2. Risk Assessment
+3. Risk Treatment
+4. Risk Traking and Review
+
+### <u>Key Roles and responsibilities in Risk Management</u>
+
+- **Senior Management** to supervise the risk management plans carried out. To develop policies ant techniques.
+
+- **Chief Information Offiecer (CIO)** responsible for executing the policies and plans reuqiered. Employees training.
+
+- **System and Information owners** to monitor the plans and policies developed for information systems.
+
+- **Busines and Functional Managers** to maintain all management processes.
+
+- **IT Security Program Managers and Computer Security Offiecers (ISSO)** responsible for  information security programs
+
+- **IT Security Practitioners** are the responsible for implementing security controls.
+
+- **Security awareness Trainers**
+
+### <u>Threat Modeling</u>
+
+It is the process or approach to identify, diagnose, and assist the threats and vulnerabilities of the system. It is a **risk management approach** for analyzing security of an application. The process has the next phases:
+1. Indetify security objectives.What data should be protected?
+2. Application Overview. Indentify the components, data flows and trust boundaries.
+3. Decompose application
+4. Identify Threats.
+5. Indentify Vulnerabilities
+
+### <u>Security Incident and Event Management (SIEM)</u>
+
+Incident Response Management is the procedure and method of handling an incident that occurs. This incident may be any specific violation of any condition, policies, or else. Additionally, incident response management defines actions required when a system is facing a threat to its confidentiality, integrity, authenticity, availability depending upon the threat level.
+
+To meet strict compliance requirements and for threat indentification and mitigation, it is needed to audit the infromation that is flowing though the network. A SIEM provides security by tracking suspicious end-user behavior activites within a real-time IT environment.
+
+Some functions perfomed by SIEMA are log collection and analysis, event correlation, log forensics, IT compliance and reporting, application monitoring, object access auditing, datat aggregation, real time alerting, user activity monitoring, dashboards, file integrity monitoring, system and device log monitoring and log retention.
+
+**Incident Management Process**
+Incident Response Management processes include: -
+1. Preparation for Incident Response
+2. Detection and Analysis of Incident Response
+3. Classification of an incident and its prioritization
+4. Notification and Announcements
+5. Containment
+6. Forensic Investigation of an incident
+7. Eradication and Recovery
+8. Post-Incident Activities
+
+The **Incident Response team** is consists of the members who are well-aware
+of dealing with incidents.
+
+- Take action according to Incident Response Plan (IRP).
+- Examination and evaluation of event, determination of damage or scope of an attack.
+-Document the event, processes.
+- If required, take the support of external security professional or consultant.
+- If required, take the support of local law enforcement.
+- Facts Collection.
+- Reporting.
+
+Functions related to a **security operations center (SOC)**
+
+- Identifying
+- Monitoring
+- Recording
+- Auditing
+- Analyzing
+
+**User behavior analytics (UBA)** is the process of tracking user behavior to detect malicious attacks, potential threats and financial frauds. 
+
+### <u>Network Security Controls</u>
+
+- Access control
+- Identification
+- Authentication
+- Authoritation
+- Accounting
+- Cryptography
+- Security Policy
+
+### <u>Access Controls</u>
+
+Selective restriction of access to a place or other system. Protects information assets. User identification.
+
+- Discretionary Access Control DAC. Restricted to users and groups
+- Mandatory Access Control MAC.End user does not decide about who can read 
+- Role-based Access.
+
+**Identification** it deals with confirming the indentity of a user. (Username)
+**Authentication** refers to verifying the credential provided by the user while identification. (Password)
+**Authoritation** providing permission to access the resource or perform an action on the network. (permission for read but not to write)
+**Accounting** refers to trackig the actions perdormed by the user on a network.
+
+### <u>Identify and Access Management IAM</u>
+
+IAM is a framework for business practices that consists of users, procedures and software productls to manage user digital indentities and access to resources of an organization; generally used for automated creation, reocrding and management of user identities and they access privileges. The right users has the right access to the right information in the correct time.
+
+IAM has two modules:
+1. Access Management Modules
+2. Identity Management Module
+
+The services provided by IAM are classified into four distinct components:
+1. *Authentication* autentication management and session management.
+2. *Authorization* acces control to various organizational resources.
+3. *User management*
+4. *Enterprise Directory Services* central user repository.
+
+### <u>Data Leakage</u>
+
+It refers to unauthorized acces or disclosure of sensitive or confidnetial data. The major risks to organization are the loss of customer loyalty, potential litigations, loss of reputation... We usually refer to two types of **data leakage threats**, insiders threats and external ones. The reasons for insider threats could be an inadecuate security awareness and training, lack of proper management controls for monitorign or the use of insecure mode of data transfers. 
+
+**Data Loss Prevention DLP** refers to the identification and monitoring of sensitive data to ensure that end users do not send sensitive information outside.
+**Data Backup** It is mainly used for two purposes, to reinstate a system to its normal working state after damage or to recover data and information after a data loss or data corruption. It is necessary to follow a strategy: Indentify critical business data, select the backup media and technology; to choose the appropriate RAID levels and finally to select the backup method (Hot or dynamic, cold or offline, and warm or nearline). The last steps are choosing a backup location (onsite. offsite or cloud), to select the backup type (full, incremental or differential) and to choose an appropriate backup solution. Finally it is necessary to conduct a recovery drill test, to validate the Data Recovery plan. 
+
+### <u>Role of Artificial Intelligence and Machine Learning in Cyber Security</u>
+
+Nowadays they are used in anti-fraud and indentity management, mobile security, predictive intelligence, behavioral analytics and anomaly detection, automated security, cyber-risk management, app security IoT security and deception security.
+
+## 1.6 Penetration Testing
+
+Penetration testing is the process of hacking a system with the permission from the owner of that system, to evaluate security, Hack Value, Target of Evaluation (TOE), attacks, exploits, zero-day vulnerability & other components such as threats, vulnerabilities, and daisy chaining. Clearly defined, full scale test of security controls.
+
+A security audit just checks whether the organization is following a set of standard security policies and procedures. A vulnerability assessment focuses on discovering the vulnerabilities in the information system but provides no indication if the vulnerabilities can be exploited or of the aumount of damage that may result. **Penetration Testing** is a methodological approach to security assessment that encompasses the security audit and vulnerability assessment and demostrates if the vulnerabilities in system can be successfully  exploited.
+
+### <u>Blue teaming/Red Teaming</u>
+
+An approach to the blue teaming is a set of security responders that performs analysis, they have access to all the organization resources. The red team does not have access to the resrources or have a very limited access, they tray to see the system from an attacker perspective. 
+
+**Types**
+- *Black Box* - done without any knowledge of the system or network
+- *White Box* - complete knowledge of the system
+- *Gray Box* - has some knowledge of the system and/or network
+
+
+**Phases**
+1. Preparation - contracts and team determined
+2. Assessment - all hacking phases (reconnaissance, scanning, attacks, etc.)
+3. Post-Assessment - reports & conclusions
+
+### <u>Security Testing Methodology</u>
+
+It is a methodological approach to discover and verify vulnerabilities. There are propietary methodologies as IBM, McAfee Foundstone or EC-Council LPT. 
+
+
+The opens source and public methodologies are:
+
+- **Open Web Application Security Project (OWASP)** 
+- **Open Source Security Testing Methodology Manual (OSSTMM)**
+
+    - **OSSTM Compliance** - "Open Source Security Testing Methodology Manual" maintained by ISECOM , defines three types of compliance
+      - **Legislative** - Deals with government regulations (Such as SOX and HIPAA)
+      - **Contractual** - Deals with industry / group requirement (Such as PCI DSS)
+      - **Standards based** - Deals with practices that must be followed by members of a given group/organization (Such as ITIL ,ISO and OSSTMM itself)
+  
+    - **OSSTM Controls**
+    - **OSSTM Class A - Interactive Controls**
+      - *Authentication* -  Provides for identification and authorization based on credentials 
+      - *Indemnification* - Provided contractual protection against loss or damages
+      - *Subjugation* - Ensures that interactions occur according to processes defined by the asset owner
+      - *Continuity* -  Maintains interactivity with assets if corruption of failure occurs
+      - *Resilience* - Protects assets from corruption and failure
+
+    - **OSSTM Class B  - Process Controls**
+      - *Non-repudiation* - Prevents participants from denying its actions
+      - *Confidentiality* - Ensures that only participants know of an asset
+      - *Privacy* - Ensures that only participants have access to the asset
+      - *Integrity* - Ensures that only participants know when assets and processes change
+      - *Alarm*  - Notifies participants when interactions occur
+      
+- **Information Systems Security Assessment Framework (ISAF)** it is supported by the Open Information System Security Group (OISSG)
+- **National Institute of Standards and Technology NIST**
+
+### <u>Vulnerability Assessment</u>
+
+Vulnerability assessment is the procedure of examination, identification, and
+analysis of system or application abilities including security processes
+running on a system to withstand any threat.
+
+**Types of Vulnerability Assessment**
+
+1. Active Assessment
+2. Passive Assessment
+3. Host-based Assessment
+4. Internal Assessment
+5. External Assessment
+6. Network Assessment
+7. Wireless Network Assessment
+8. Application Assessment
+
+**Network Vulnerability Assessment Methodology**
+Phases of Vulnerability Assessment:
+
+1. **Acquisition** compares and review previously- identified vulnerabilities, laws, and procedures that are related to network vulnerability assessment.
+2. **Identification** interaction with customers, employees, administration or other people that are involved in designing the network architecture to gather the technical information.
+3. **Analyzing** Review information, Analyzing previously identified vulnerabilities results, Risk Assessment, Vulnerability and Risk Analysis and Evaluation of the effectiveness of existing security policies.
+4. **Evaluation** Inspection of Identified Vulnerabilities, Identification of flaws, gaps in existing & required Security, Determination of Security Control required resolving issues & Vulnerabilities and Identify modification and Upgrades.
+5. **Generating Reports** Reports contain: Task did by each member of the team, Methods & tools used, Findings, Recommendations and Collected information from different phases.
+
+### <u>Common Criterial for Information Technology Security Evaluation</u>
+
+- Routinely called "Common Criteria" (CC)
+- **Evaluation Assurance Level** (EAL) - goes from level 1 - 7
+- **Target of Evaluation** - the system that is being tested
+- **Security Target** (ST) - document describing the TOE and security requirements
+- **Protection Profile** (PP) - security requirements that are specific to the type of device being tested
+
+## 1.7 Information Security Laws and Standards
+
+- **PCI-DSS**  - "Payment Card Industry Data Security Standard" Standard for organizations handling Credit Cards, ATM cards and other POS cards
+
+- **ISO 27001** - Security standard based on the British BS7799 standard, focuses on security governance. It specifies the requirements for establishing, implementing, maintaining, and continually improving an information security management system.
+
+- **HIPAA** - "Health Insurance Portability and Accountability Act" a law that set's privacy standards to protect patient medical records and health information shared between doctors, hospitals and insurance providers. Electronic transaction and code serts standards, privacy rule, security rule, national indetifier requirements and enforcement rule.
+ 
+- **SOX** - "Sarbanes-Oxley Act" Law that requires publicly traded companies to submit to independent audits and to properly disclose financial information. 11 titles for key requirements.
+
+- **Digital Millenium Copyright Act DCMA** and **FISMA** - "Federal Information Security Modernization Ac Of 2002" A law updated in 2004 to codify the authority of the Department of Homeland Security with regard to implementation of information security policies 
+
+- **NIST-800-53** -  Catalogs security and privacy controls for federal information systems, created to help implementation of FISMA
+
+- **ISO 27002 AND 17799** - Based on BS799 but focuses on security objectives and provides security controls based on industry best practice
+
+- **FITARA** - "Federal Information Technology Acquisition Reform Act" A 2013 bill that was intended to change the framework that determines how the US GOV purchases technology 
+
+- **COBIT** - "Control Object for Information and Related Technology" IT Governance framework and toolset, created by ISACA and ITGI
+
+- **GLBA** - "U.S Gramm-Leach-Bliley Act" Law that protects the confidentiality and integrity of personal information that is collected by financial institutions.
+
+- **CSIRT** - "Computer Security Incident Response Team" CSIRT provided a single point of contact when reporting computer security incidents
+
+- **ITIL** - "Information Technology Infrastructure Library" - An operational framework developed in the '80s that standardizes IT management procedures 

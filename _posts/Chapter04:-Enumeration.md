@@ -1,0 +1,305 @@
+# Enumeration
+
+## 4.1 Enumeration Concepts
+
+During the enumeration phase, the attacker creates active connections with the taget system and performs directed queries to gain more information about him. It collects the following information:
++ Network resources
++ Network shares
++ Routing tables
++ Audit and services settings
++ SNMP and FQDN detais
++ Machine names
++ Users and groups
++ Applications and banners
+
+To extract information about a target there are some techniques:
+
+1. Extract user names using email IDs
+2. Extract information using defautl passwords
+3. Brute force Active Directory. It is Microsoft...
+4. Extract information using DNS Zone Transfer. If the name server permits zone transfer, it will convert all the DNS names and IP addresses, hosted by that server, to ASCII text.
+5. Extract user grups from Windows. The attacker must have a registered ID as a user in the Active Directory.
+6. Extract user names using SNMP
+
+### <u>Services and Ports to Enumerate</u>
+
+
+  - | Port Number | Protocol | Transport Protocol |
+    | ----------- | -------- | ------------------ |
+    | 20/21       | FTP      | TCP                |
+    | 22          | SSH      | TCP                |
+    | 23          | Telnet   | TCP                |
+    | 25          | SMTP     | TCP                |
+    | 53          | DNS      | TCP/UDP            |
+    | 67          | DHCP     | UDP                |
+    | 69          | TFTP     | UDP                |
+    | 80          | HTTP     | TCP                |
+    | 110         | POP3     | TCP                |
+    | 135         | RPC      | TCP                |
+    | 137-139     | NetBIOS  | TCP/UDP            |
+    | 143         | IMAP     | TCP                |
+    | 161/162     | SNMP     | UDP                |
+    | 389         | LDAP     | TCP/UDP            |
+    | 443         | HTTPS    | TCP                |
+    | 445         | SMB      | TCP                |
+    | 500         | ISAKMP   | UDP                |
+    | 514         | SYSLOG   | UDP                |
+    | 3268 | Global catalog service | TCP/UDP     |
+    | 5060,5061   | SIP      | TCP/UDP            |
+    
+## 4.2 NetBIOS Enumeration
+
+The NetBIOS name is a unique 16 ASCII character string used to indentify the network devices ower TCP/IP, the first 15 name the device and the last one is for the service or name record type.
+
+
+  - | Code | Type   | Meaning                   |
+    | ---- | ------ | ------------------------- |
+    | <1B> | UNIQUE | Domain master browser     |
+    | <1C> | UNIQUE | Domain controller         |
+    | <1D> | GROUP  | Master browser for subnet |
+    | <00> | UNIQUE | Hostname                  |
+    | <00> | GROUP  | Domain name               |
+    | <03> | UNIQUE | Service running on system |
+    | <20> | UNIQUE | Server service running    |
+
+Attackers use the NetBIOS enumeration to obtain:
++ List of computers that belong to a domain
++ List of shares on the individual hosts in the network
++ Polices and passwords
+
+- [Command on Windows](https://docs.microsoft.com/es-es/windows-server/administration/windows-commands/nbtstat) is **nbtstat**
+    - '/a remotename' Displays the NetBIOS name table of a remote computer. The NetBIOS name table is the list of NetBIOS names that corresponds to NetBIOS applications running on that computer.
+    - '/A IPaddress' Displays the NetBIOS name table of a remote computer.
+    - /c Displays the contents of the NetBIOS name cache, the table of NetBIOS names and their resolved IP addresses.
+    - '/n' Displays the NetBIOS name table of the local computer. The status of registered indicates that the name is registered either by broadcast or with a WINS server.
+    - '/r' Displays NetBIOS name resolution statistics.
+    - /R Purges the contents of the NetBIOS name cache and then reloads the pre-tagged entries from the Lmhosts file.
+    - '/RR' Releases and then refreshes NetBIOS names for the local computer that is registered with WINS servers.
+    - '/s' Displays NetBIOS client and server sessions, attempting to convert the destination IP address to a name.
+    - '/S' Displays NetBIOS client and server sessions, listing the remote computers by destination IP address only.
+    - 'interval' Displays selected statistics, pausing the number of seconds specified in interval between each display. Press CTRL+C to stop displaying statistics. If this parameter is omitted, nbtstat prints the current configuration information only once.
+
+
+- NetBIOS name resolution doesn't work on IPv6
+- **Other Tools**
+  - SuperScan
+  - [Hyena](https://www.systemtools.com/hyena/)
+  - NetBIOS Enumerator
+  - NSAuditor
+  - NetScanTools Pro
+
+### <u>Enumerating User Accounts</u>
+
+The Windows NT and Windows 2000 Resource Kits come with a number of command-line tools that help to administer systems. Over time, It has grown a collection of similar tools, including some not included in the Resource Kits. What sets these tools apart is that they all allow to manage remote systems as well as the local one. The first tool in the suite was PsList, a tool that lets  view detailed information about processes, and the suite is continually growing. The "Ps" prefix in PsList relates to the fact that the standard UNIX process listing command-line tool is named "ps", so I've adopted this prefix for all the tools in order to tie them together into a suite of tools named PsTools.
+
+The tools included in the PsTools suite, which are downloadable as a package, are:
+
+   + PsExec - execute processes remotely
+   + PsFile - shows files opened remotely
+   + PsGetSid - display the SID of a computer or a user
+   + PsInfo - list information about a system
+   + PsPing - measure network performance
+   + PsKill - kill processes by name or process ID
+   + PsList - list detailed information about processes
+   + PsLoggedOn - see who's logged on locally and via resource sharing (full source is included)
+   + PsLogList - dump event log records
+   + PsPasswd - changes account passwords
+   + PsService - view and control services
+   + PsShutdown - shuts down and optionally reboots a computer
+   + PsSuspend - suspends processes
+   + PsUptime - shows you how long a system has been running since its last reboot (PsUptime's functionality has been incorporated into PsInfo
+
+### <u>Enumerating Shared Resources Using Net View</u>
+
+It is a command line utility that displays a list of computer or network resources.
+
+    net view \\<computername>
+    net view /workgroup:<workgroupname>
+    
+## 4.3 SNPM Enumeration
+
+[SNMP](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol) (Simple Network Management Protocol) is a manager and an agent, the agents are embedded on the network devices, and the manager is installed on a separate computer. It is an application layer protocol that runs on UDP. The SNMP agent receives requests on UDP port 161. The manager may send requests from any available source port to port 161 in the agent. The agent response is sent back to the source port on the manager. The manager receives notifications (Traps and InformRequests) on port 162. The agent may generate notifications from any available port. SNMP contains two passwords:
+
+- **Read community string**. Configuration of the device or system can be viewed.
+- **Read/write community string** Configuration on the device can be changed or edited.
+
+Commonly used SNMP enumeration tools include [SNMPUTIL](http://www.wtcs.org/snmp4tpc/testing.htm) and [Network Browser](https://www.solarwinds.com/es/network-performance-monitor/use-cases/ip-network-browser)
+
+### <u>Working of SNMP</u>
+
++ **GetRequest** to request information from the SNMPO agent.
++ **GetNextRequest** used by the manager to retrieve all the datad stored in the array or table.
++ **GetResponse** used by the agent to satisfy a request made by the manager.
++ **Trap** used by the agent to inform the pre-configured SNMP manager of a certain event.
+
+### <u>Management Information Base (MIB)</u>
+
+It is a virtual database containing formal description of all the network objects that can be managed using SNMP. MIB elements are recognized by the object identifiers (OID), it is a numeric name given to the object and it begins with the root of the MIB tree.
+
+### <u>SNMP Enumeration Tools</u>
+
+- [OpUtils](https://www.manageengine.com/products/oputils/): OpUtils with its integrated set of tools helps network engineers to monitor, diagnose, and troubleshoot their IT resources.
+
+- [Engineer's Toolset](https://www.solarwinds.com/es/engineers-toolset): performs network discovery on a single subnet or a range of subnets using ICMP and SNMP. It scans a single IP, IP address range, or subnet and displays network devices discovered in real time.
+
+## 4.4 LDAP Enumeration
+
+**Lightweith Directory Access Protocol [LDAP](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol)** it is an application protocol for accessing and maintaining distributed directory information services over an Internet Protocol (IP) network.
+
+It uses DNS for quick lookups and fast resolution of queries. A client starts an LDAP session by connecting to a Directory System Agent (DSA) typically on TCP port 389 and sends an operation request to the DSA. Basic encoding rules (BER) transmits information between the client and the server. If one query anonymously the LDAP service, is possible to obtain sensitive information such as user names, address, departmental details, server names...
+
+### <u>LDAP Enumeration Tools</u>
+
+- Softerra LDAP Administrator
+- LDAP Admin Tool
+- LDAP Account Manager
+- LDAP Search
+- JXplorer
+- Active Directory Explorer
+
+## 4.5 NTP Enumeration
+
+The **[Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol)** uses the 123 UDP port. An attacker can obtain information as list of host connected to NTP server, clients IP address in a network, their system names and OSs and internal IPs if NTP servers is in the DMZ.
+
+**ntptrace**:
+- Traces a chain of NTP servers back to the primary source
+
+    `ntptrace [-vdn] [-r retries] [-t timeout] [server]`
+
+**ntpdc**:
+- Monitors operation of the NTP daemon, ntpd
+
+    `/usr/bin/ntpdc [-n] [-v] host1 | IPaddress1...`
+
+**ntpq**:
+- Monitors NTP daemon ntpd operations and determines performance
+
+    `ntpq [-inp] [-c command] [host] [...]`
+
+### <u>NTP Enumeration Tools</u>
+
+- [PRTG Network Monitor](https://www.paessler.com/prtg)
+- Nmap
+- Wireshark
+- udp-proto-scanner
+- NTP Time Server Monitor
+
+## 4.6 SMTP and DNS Enumeration
+
+SMTP provides 3 built-in-commands:
++ **VRFY**: Validates users
+
+`    $ telnet 192.168.168.1 25`
+    `...`
+    `VRFY Jonathan`
+    `250 Super-User`
+    `<Jonathan@NYmailserver>`
+    `VRFY Smith`
+    `550 Smith... User unknown`
+    
++ **EXPN**: Tells the actual delivery addresses of aliases and mailing lists
+
+ 
+`    $ telnet 192.168.168.1 25`
+    `...`
+    `EXPN Jonathan`
+    `250 Super-User`
+    `<Jonathan@NYmailserver>`
+    `EXPN Smith`
+    `550 Smitn... User unknown`
+   
+    
++ **RCPT TO**: Defines the recipients of the message
+
+`    $ telnet 192.168.168.1 25`
+    `...`
+    `MAIL FROM:Jonathan`
+    `250 Jonathan... Sender ok`
+    `RCPT TO:Ryder`
+    `250 Ryder... Recipient ok`
+    `RCPT TO: Smith`
+    `550 Smith... User unknown`
+   
+### <u>SMTP Enumeration Tools</u>
+
++ **NetScanTools Pro**
++ **smtp-user-enum**
+
+### <u>DNS Enumeration Using Zone Transfer</u>
+
+DNS zone transfer is sending a copy from the primary DNS server to a secondary DNS. An attacker can gather valuable network information such as DNS server names, hostnames, machine names, user names, IP addresses, etc. of the potential targets. In a DNS zone transfer enumeration, an attacker tries to retrieve a copy of the entire zone file for a domain from the DNS server.
+
+## 4.7 Other enumeration techniques
+
+**IPsec Enumeration**
+Nmap scan for checking the status of isakmp over port 500:
+
+    nmap -sU -p 500 <target IP address>
+
+Also the [ike-scan](https://github.com/royhills/ike-scan) tool uses fingerprint to enumerate ecryption, hashing algorithm, authentication type...
+
+    ike-scan -M <target gateway address>
+
+**VoIP Enumeration**
+
+The Session Initiation Protocol uses prots 2000,2001,5050,5061. VoIP enumeration provides some information as VoIP gateways/servers, IP-PBX systems, client software...
+
+- [Svmap](https://github.com/EnableSecurity/sipvicious)
+
+**RPC Enumeration**
+
+Remote procedure call is a technology used for creating distributed client/server programs. The portmaper listens on TCP and UDP port 111 to detect end points and present clients. Enumeratin RCP allows attackers to indentify any vulnerable services on these service ports. To identify the RCP service running on the network:
+
+    nmap -sR IPaddress
+    nmap -T4 -A IPaddress
+
+**Unix/Linux User Enumeration**
+
+- rusers
+- rwho
+- finger 
+
+## 4.8 Enumeration Countermeasures
+
+**SNMP**:
++ Remove the SNMP agent or turn off the SNMP service
++ If shutting off SNMP is not an option, then change the default community string name
++ Upgrade to SNMP3, which encrypts passwords and messages
++ Implement the Group Policy security option called "Additional restrictions for anonymous connections"
++ Ensure that the access to null session pipes, null session shares, and IPSec filtering is restricted.
+
+**DNS**:
++ Disable the DNS zone transfers to the untrusted hosts
++ Make sure that the private hosts and their IP addresses are not published into DNS zone files of public DNS server
++ Use premium DNS registration services that hide sensitive information such as HINFO from public
++ Use standard network admin contacts for DNS registrations in order to avoid social engineering attacks
+
+**SMTP**: Configure SMTP servers to:
+
++ Ignore email messages to unknown recipients
++ Not include sensitive mail server and local host information in mail responses
++ Disable open relay feature
+
+**LDAP:**
++ By default, LDAP traffic is transmitted unsecured; use SSL technology to encrypt the traffic
++ Select a user name different from your email address and enable account lockout
+
+**SMB**:
++ Disable SMB protocol on Web and DNS Servers
++ Disable SMB protocol on Internet facing servers
++ Disable ports TCP 139 and TCP 445 used by the SMB protocol
++ Restrict anonymous access through RestrictNullSessAccess parameter from the Windows Registry
+
+## 4.9 Enumeration Pen Testing
+
+1. Find the network range
+2. Calculate the subnet mask
+3. Undergo host discovery
+4. Perform port scanning
+5. Perform NetBIOS enumeration
+6. Perform SNMP enumeration
+7. Perform LDAP enumeration
+8. Perform NTP enumeration
+9. Perform SMTP enumeration
+10. Perform IPsec, VoIP, VPN and Linux enumeration
+11. Document all the findings
