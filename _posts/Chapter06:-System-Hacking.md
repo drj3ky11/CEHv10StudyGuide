@@ -1,0 +1,327 @@
+## 6.1 System Hacking concepts
+
+In the **footprinting phase**, the attacker creates a profile or the target organization, obtaining information such as its IP address range, namespace... The **scanning** phase allows us to enumerate ports, services, hosts and possible vulnerabilities. The next step is the **enumerate** phase, it is an intrusive probing method, we can gather information such as user list, routing tables, security flaws... Finally the **vulnerability analysis** allows to identify security loopholes in the target organization.
+
+### <u>CEH Hacking Methodology (CHM)</u>
+
+There are three steps in the CEH Hacking Methodology (CHM):
+
+1. Gaining Access, by cracking passwords and escalating privileges.
+2. Maintaining Access: executing malicious activities and hiding files.
+3. Clearing Logs: covering tracks.
+
+## 6.2 Cracking Passwords 
+
+**Types of Passwords Attacks:**
+- Non-Electronic Attacks: like shoulder surfing, social engineering and dumpster diving.
+- Active Online Attacks: direct contact with the victim machine, dictionary and brute forcing attack, hash injection and phishing, password guessing.
+- Passive Online Attacks: without communicating; wire sniffing, man-in-the-Middle attack and replay attack.
+- Offline Attack: attacker copies the target's file and then tries to crack in his own system. Rainbow Table Attack, Distributed Network Attack.`
+
+### <u>Active Online Attack</u>
+
+- A dicrionary attack performed with a dictionary file loaded into a cracking app that runs agaisnt user accounts.
+
+- Brute forcing attack, the program tries every combination of characters until the password is broken. It is a time-consuming process.
+
+- Rule-based Attack: when some information about the password is found. The *hybrid attack* is the one which depends on a dictionary, the dictionary will be created based on the information that we have about the password. The *syllable attack* when password are not know words.
+
+**Password Guessing**
+
+1. Find a valid user
+2. Create a list of possible passwords from information collected
+3. Rank passwords from high probability to low
+4. Key in each password, until the correct one is discovered.
+
+**Default Passwords**
+
+Where to search default passwords?
+
+- [Open Sez Me!](https://open-sez.me)
+- [FortyPoundHead](https://www.fortypoundhead.com/tools_dpw.asp)
+- [cirt.net](https://cirt.net/passwords)
+- [DefaultPassword](http://www.defaultpassword.us)
+- [Router passwords](https://www.routerpasswords.com)
+
+**Trojan/Spyware/Keylogger**
+
+A Trojan is a program that masks itself as a benign app; a Spyware is a type of malware that attackers install on a computer to secretly gather information and a keylogger is a program that records all user keystrokes without the user's knowledge.
+
+
+**Hash Injection Attack**
+
+Generally, the system stores hash values of the credentials in the SAM database/file on a Windows computer. Some times it is possible to inject directly a stolen hash in a authentication mechanism.
+
+**LLMNR/NBT-NS Poisoning**
+
+Link Local Multicast Name Resolution and NetBIOS Name Service are to main elements of Windows. They are used to perform name resolution. When a DNS server fails in an attempt to resolve a name, the user perform a unauthenticated UDP broadcast asking. Then, an attacker who is passively listen to a network for LLMNR (5355 UDP) and NTB-NS (137 UDP) respond to the request pretending to be a target host. 
+
+One useful tool is [Responder](https://github.com/SpiderLabs/Responder) and the new version https://github.com/lgandx/Responder 
+
+
+### <u>Passive Online Attack</u>
+
+**Wire sniffing**
+
+Sniff credentials during transit by capturing Internet packets.
+
+**Man-In-the-Middle and Replay Attack**
+
+The attacker has to sniff from both sides of the connection simultaneously. In a replay attack captured tokens are placed back on he network to gain access.
+
+
+### <u>Offline Attack</u>
+
+**Rainbow Table Attack**
+
+A rainbow table is a precomputed table which contains words and their hash values.
+
+
+Some tools to create Rainbow Tables are [rtgen](https://project-rainbowcrack.com/index.htm) and [winrtgen](http://www.oxid.it/)
+
+**Distributed Network Attack**
+
+DNA utilizes the unused processing power of machines across the network. It is necessary a DNA server, DNA client and a network management.
+
+### <u>Password Recovery Tools</u>
+
+[Elcomsoft Distributed Password Recovery](https://www.elcomsoft.es/)
+[**Hashcat**](https://hashcat.net/hashcat/)
+
+
+### <u>Microsoft authentication</u>
+
+**The Security Account Manager (SAM)**
+
+It is a database file in Windows XP, Windows Vista, Windows 7, 8.1 and 10 that stores users' passwords. It can be used to authenticate local and remote users. Beginning with Windows 2000 SP4, Active Directory authenticates remote users. SAM uses cryptographic measures to prevent unauthenticated users accessing the system.
+
+The user passwords are stored in a hashed format in a registry hive either as a LM hash or as an NTLM hash. This file can be found in %SystemRoot%/system32/config/SAM and is mounted on HKLM/SAM.
+
+In an attempt to improve the security of the SAM database against offline software cracking, Microsoft introduced the SYSKEY function in Windows NT 4.0. When SYSKEY is enabled, the on-disk copy of the SAM file is partially encrypted, so that the password hash values for all local accounts stored in the SAM are encrypted with a key (usually also referred to as the "SYSKEY"). It can be enabled by running the syskey program.
+
+**NTLM Authentication**
+
+NTLM is a challenge-response authentication protocol which uses three messages to authenticate a client in a connection oriented environment (connectionless is similar), and a fourth additional message if integrity is desired.
+
+1. First, the client establishes a network path to the server and sends a NEGOTIATE_MESSAGE advertising its capabilities.
+2. Next, the server responds with CHALLENGE_MESSAGE which is used to establish the identity of the client. 
+3. Finally, the client responds to the challenge with an AUTHENTICATE_MESSAGE.
+
+The NTLM protocol uses one or both of two hashed password values, both of which are also stored on the server (or domain controller), and which through a lack of salting are password equivalent, meaning that if you grab the hash value from the server, you can authenticate without knowing the actual password. The two are the LM Hash (a DES-based function applied to the first 14 chars of the password converted to the traditional 8 bit PC charset for the language), and the NT Hash (MD4 of the little endian UTF-16 Unicode password). Both hash values are 16 bytes (128 bits) each.
+
+The NTLM protocol also uses one of two one way functions, depending on the NTLM version. NT LanMan and NTLM version 1 use the DES based LanMan one way function (LMOWF), while NTLMv2 uses the NT MD4 based one way function (NTOWF)
+
+NTLM includes three methods of challenge-response authentication: LM, NTLMvl, and NTLMv2. The authentication process for all the methods is the same, but they differ in the level of encryption.
+
+The following steps demonstrate the flow of events that occur when a client authenticates to a domain controller using any of the NTLM protocols. The client and server negotiate an authentication protocol. This is accomplished through the Microsoft negotiate Security Support Provider (SSP).
+
+1. The client sends the user name and domain name to the domain controller.
+
+2. The domain controller generates a 16-byte random character string called a nonce.
+
+3. The client encrypts the nonce with a hash of the user password and sends it back to the domain controller.
+
+4. The domain controller retrieves the hash of the user password from the security account database.
+
+5. The domain controller uses the hash value retrieved from the security account database to encrypt the nonce. The value is compared to the value received from the client. If the values match, the client is authenticated.
+
+- Older systems use LM hashing.  Current uses NTLM v2 (MD5) and Windows network authentication uses Kerberos
+- **LM Hashing**
+  - Splits the password up.  If it's over 7 characters, it is encoded in two sections.
+  - If one section is blank, the hash will be AAD3B435B51404EE
+  - Easy to break if password  is 7 characters or under because you can split the hash
+- SAM file presents as UserName:SID:LM_Hash:NTLM_Hash:::
+- **Ntds.dit** - database file on a domain controller that stores passwords
+  - Located in %SystemRoot%\NTDS\Ntds.dit or
+  - Located in %SystemRoot%System32\Ntds.dit
+  - Includes the entire Active Directory
+ 
+
+**Kerberos Authentication**
+
+It is a network authentication protocol that provides strong authentication for client/server applications by using secret-key cryptography. It provides mutual authentication. Messages through Kerberos are protected against replay attacks and eavesdropping.
+
+  - Steps of exchange
+    1. Client asks **Key Distribution Center** (KDC) for a ticket.  Sent in clear text.
+    2. Server responds with **Ticket Granting Ticket** (TGT).  This is a secret key which is hashed by the password copy stored  on the server.
+    3. If client can decrypt it, the TGT is sent back to the server requesting a **Ticket Granting Service** (TGS) service ticket.
+    4. Server sends TGS service ticket which client uses to access resources.
+
+### <u>Microsoft registry Overview</u>
+
+- **Registry**
+  - Collection of all settings and configurations that make the system run
+  - Made up of keys and values
+  - Root level keys
+    - **HKEY_LOCAL_MACHINE** (HKLM) - information on hardware and software
+    - **HKEY_CLASSES_ROOT** (HKCR) - information on file associates and OLE classes
+    - **HKEY_CURRENT_USER** (HKCU) - profile information for the current user including preferences
+    - **HKEY_USERS** (HKU) - specific user configuration information  for all currently active users
+    - **HKEY_CURRENT_CONFIG** (HKCC) - pointer to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Hardware Profiles\Current
+  - Type of values
+    - **REG_SZ** - character string
+    - **REG_EXPAND_SZ** - expandable string value
+    - **REG_BINARY** - a binary value
+    - **REG_DWORD** - 32-bit unsigned integer
+    - **REG_LINK** - symbolic link to another key
+  - Important Locations
+    - HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce
+    - HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices
+    - HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+    - HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+  - Executables to edit
+    - regedit.exe
+    - regedt32.exe (preferred by Microsoft)
+- **MMC**
+  - Microsoft Management Console - used by Windows to administer system
+  - Has "snap-ins" that allow you to modify sets (such as Group Policy Editor)
+
+### <u>Password Salting</u>
+
+It is about adding random strings of characters to the password before calculating their hashes. It makes to crack password more difficult.
+
+[Salting](https://www.mcafee.com/blogs/enterprise/cloud-security/what-is-a-salt-and-how-does-it-make-password-hashing-more-secure/) 
+*In order to add an additional layer of security, randomness needs to be added to the original plaintext value before hashing so that it will not generate the same hashed value each time. Randomizing these hashes by appending or prepending a random string, known as a salt, can make it significantly more challenging for an attacker to use lookup tables or rainbow tables to crack these passwords by increasing the possible hashed values each password can have. If each user has a unique salt, that makes the password immune against reverse lookups too. An internal file system which has hashed passwords with a salt would look as follows –*
+
+hash (“letmein” + “F34564R8”) = 8f3k9j3hdk98jk30lsvn9al30lfb48slhbtwe9uka903bwj380dsfj3v2nf930nk3
+hash (“letmein” + “Y456f3q9”) = ber5jg0qhekgl8dkjhl52309uwlkmcbkuw385b9smqnv9c234calq95nf34flql
+hash (“letmein” + “56hwF3h8”) = w2lkg034fmwprm80n59fdmal40djwbel46n32ldn2la9702nd772ha95lg06j
+
+### <u>Tools to extract passwords</u>
+
+[pwdump7](http://www.tarasco.org/security/pwdump_7/) The tool runs by extracting the binary SAM and SYSTEM File from the Filesystem and then the hashes are extracted.
+
+[fgdump](http://foofus.net/goons/fizzgig/fgdump/) A utility for dumping passwords on Windows NT/2000/XP/2003 machines
+
+### <u>Tools to crak passwords</u>
+
+[L0phtCrack](https://l0phtcrack.com/doc/): A password cracking application used for locally or remotely locating user account information and cracking the corresponding passwords. Windows/Unix/Linux/ FreeBSD/ etc. Can be used for periodically scanning and cracking system passwords.
+
+[Ophcrack](https://ophcrack.sourceforge.io/): Free version of Ophcrack. Less features. Not as robust.
+
+[RainbowCrack](https://project-rainbowcrack.com/): Cracks hashes referenced against rainbow tables. It’s different from traditional brute force crackers in that it uses large pre-computed tables called “rainbow tables”; which reduces the amount of time the brute force takes.
+
+**John the Ripper**: CLI password cracking utility that can have custom rules created as well as use custom password lists to crack passwords.
+
+    john shadow.txt
+    john –wordlist=passwords.txt shadow.txt
+
+**Trinity Rescue Kit**: Live Linux distribution that aims specifically at recovery and repair operations on Windows machines, but is equally usable for Linux recovery issues. Since version 3.4 it has an easy to use scrollable text menu that allows anyone who masters a keyboard and some English to perform maintenance and repair on a computer, ranging from password resetting over disk cleanup to virus scanning.
+
+**Medusa**: Remote, speedy, modular brute force cracker for network services. HTTP, MySQL, SMB, SMTP, SNMP, SSHv2
+
+**Brutus**: Older remote password cracker.
+**Cain and Abel**
+**Hashcat**
+
+
+### <u>How to Defend against Password Cracking</u>
+
+- Enable information security audit to monitor and track passwords attacks
+- Do not use the same password during password change
+- Do not share passwords
+- Do not use passwords that can be found in a dictionary
+- Do not use cleartext protocols or weak encryption
+- Set the password change policy to 30 days
+- Avoid storing password in an unsecured location
+- Do not use any system's defautl passwords
+- Make passwords hard to guess (8-12 characters)
+- Ensure that applications neither store passwords
+- Use salt
+- Enable SYSKEY with strong password to protect the SAM
+- Never use personal information
+- Monitor server's logs searching for brute-force attacks
+- Lock out if many incorrect passwords guesses
+- Disable LAN manager and NTLM (if possible)
+- Perform a periodic audit of passwords in the organization
+- Check suspicious application that stores passwords in memory
+- Update system
+- Set automated password reset
+- Make the system BIOS password-protected
+
+## 6.3 Escalating Privileges
+
+Attackers take advantege of design flaws, programming errors, bugs, and configuration oversights in th OS and software application to gain administrative access to the network and its assocaited application.
+
+**Types of Privilege Escalation**
+
+- Horizontal: when moves to an other user with similar access permisions
+- Vertical: moves to an admin user or to an user with admin privileges.
+
+
+### <u>Ussing DLL Hijacking</u>
+
+Most Windows applications do not use the fully qualified path when loading and external [DLL library](https://en.wikipedia.org/wiki/Dynamic-link_library).
+
+Applications in Windows can search for DLLs. If applications designers don’t consider this when designing applications, then the app could be vulnerable to DLL Hijacking. If an application is vulnerable to DLL Hijacking, attackers can put malicious DLLs in the PATH or other location that is searched by the application and have them executed by the application. This comes in handy for privilege escalation and for persistence. For example, let’s say a service runs as SYSTEM, and you only have a user with very limited privileges. By observing that the service searches for the DLL in a number of locations, and one of those happens to be writable by the user, a malicious DLL placed in that location would exploit DLL Hijacking to provide you with SYSTEM privileges.
+
+### <u>Exploiting vulnerabilities</u>
+
+Many public vulnerability repos are avaible, [ExploitDatabase](https://www.exploit-db.com/) [SecurityFocus](https://www.securityfocus.com/)
+
+### <u>Using Dylib Hijacking</u>
+
+OS X is also vulnerable to dynamic library attacks. The env variable DYLD_INSERT_LIBRARIES for example; could force the loader to load malicious libraries automatically into a target running process.
+
+### <u>Spectre and Meltdown vulnerabilities</u>
+
+They are vulnerabilities found in the modern processors (AMD, ARM and Intel) design. CPU hardware implementations are vulnerable to side-channel attacks, referred to as [Meltdown and Spectre](https://us-cert.cisa.gov/ncas/alerts/TA18-004A). Meltdown is a bug that "melts" the security boundaries normally enforced by the hardware, affecting desktops, laptops, and cloud computers. Spectre is a flaw an attacker can exploit to force a program to reveal its data. The name derives from "speculative execution"—an optimization method a computer system performs to check whether it will work to prevent a delay when actually executed. Spectre affects almost all devices including desktops, laptops, cloud servers, and smartphones.
+
+[Speculative execution](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) essentially involves a chip attempting to predict the future in order to work faster. If the chip knows that a program involves multiple logical branches, it will start working out the math for all of those branches before the program even has to decide between them. For instance, if the program says, "If A is true, compute function X; if A is false, compute function Y", the chip can start computing both functions X and Y in parallel, before it even knows whether A is true or false. Once it knows whether A is true or false, it already has a head start on what comes after, which speeds up processing overall. 
+
+
+**Sectre**
+
+     .-.
+    (o o) boo!
+    | O \
+     \   \
+      `~~~'
+Spectre breaks the isolation between different applications. It allows an attacker to trick error-free programs, which follow best practices, into leaking their secrets. In fact, the safety checks of said best practices actually increase the attack surface and may make applications more susceptible to Spectre.
+
+**Meltdown**
+
+Meltdown breaks the most fundamental isolation between user applications and the operating system. This attack allows a program to access the memory, and thus also the secrets, of other programs and the operating system. 
+
+[More info here](https://meltdownattack.com/)
+
+
+### <u>Others</u>
+
+- **Access Token Manipulation** After a user is authenticated a token is created and used for every process associated with the user. Attackers can obtain access tokens of other users of generate spoofed tokens to escalate.
+
+- **Application Shimming** Shim is a Windows Application Compatibility Framework to provide compatibility between older versions and newer. The Shim Infrastructure applies a method of Application Programming Interface (API) hooking. Explicitly, it forces the nature of linking to redirect API calls from Windows itself to alternative code – the shim itself. Shims like RedirectEXE, injectDLL adn GetProcAddress can be used by atackers.
+
+- **File system permissions Weakness** replacing the binary
+
+- **Path Interception** 
+- **Scheduled Task**
+- **Launch Daemon**
+- **Plist Modification**
+- **Setuid and setgid**
+- **Web shell**
+
+### <u>How to defend against Privilege Escalation</u>
+
+The best countermeasure is to ensure that users have least possible or just enough privileges to user their system effectively.
+
+* Restrict interactive logon privileges
+* Use encryption
+* Run users and app on the least privileges
+* Reduce code that runs with particular privileges
+* Multi factor authentication
+* Perform debugging using bounds checkers and stress test
+* Run services as unprivileged accounts
+* Search coding errors and bugs
+* Privilege separation methodology 
+* Change UAC settings to "Always Notify"
+* Restrict users from writing files to the search paths for applications
+* Monitoring file system permissions
+* Reduce the privileges of user accounts and groups 
+* Use whitelisting
+* Use the fully qualified paths in all Windows paths
+* Ensure that the executables are placed in write-protected directories
+* In MAC, prevent plists files from being altered by users 
+* Block unwated system utilities
+* Patch and update systems 
+* Disable the default local admin account
