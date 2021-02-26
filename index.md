@@ -11,12 +11,12 @@ Hacker Complete Training Guide with Practice Labs](https://www.amazon.es/CEH-v10
 
 Pd.: sorry for my bad English
 
-1. [Chapter 01: Introduction to Ethical Hacking](site/c01.md)
-2. [Chapter 2: Footprinting & Reconnaissance](site/c02.md)
-3. [Chapter03: Scanning Networks](site/c03.md)
-4. [Chapter 4: Enumeration](site/c04.md)
-5. [Chapter 5: Vulnearbility Analysis](site/c05.md)
-6. [Chapter 6: System Hacking](site/c06.md)
+1. [Chapter 01: Introduction to Ethical Hacking](chapt/c01.md)
+2. [Chapter 2: Footprinting & Reconnaissance](chapt/c02.md)
+3. [Chapter03: Scanning Networks](chapt/c03.md)
+4. [Chapter 4: Enumeration](chapt/c04.md)
+5. [Chapter 5: Vulnearbility Analysis](chapt/c05.md)
+6. [Chapter 6: System Hacking](chapt/c06.md)
 
 
 ## Blog
