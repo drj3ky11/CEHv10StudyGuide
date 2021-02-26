@@ -7,10 +7,18 @@
 ![CEH](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYRwpxNVlrDwzk96RJE0T17mE4rvY28mxpUg&usqp=CAU)
 
 Here you can find some resumes from EC-Council’s Certified Ethical Hacking 312-50 exam. Mostly based on [CEH v10: EC-Council Certified Ethical
-Hacker Complete Training Guide with Practice Labs](https://www.amazon.es/CEH-v10-EC-Council-Certified-Questions/dp/172379841X) and some resources from this [repo](https://github.com/scottymcraig/CEHv10StudyGuide) from Scott Craig 
+Hacker Complete Training Guide with Practice Labs](https://www.amazon.es/CEH-v10-EC-Council-Certified-Questions/dp/172379841X)
 
 Pd.: sorry for my bad English
 
-1. [Chapter 01: Introduction to Ethical Hacking](_posts/2021-02-26-c01.md)
-2. Not charg4
-3. [Chapter03: Scanning Networks](_posts/Chapter03:-Scanning-Networks.md)
+1. [Chapter 01: Introduction to Ethical Hacking](_sites/c01.md)
+2. [Chapter 2: Footprinting & Reconnaissance](_sites/c02.md)
+3. [Chapter03: Scanning Networks](_sites/c03.md)
+4. [Chapter 4: Enumeration](_sites/c04.md)
+5. [Chapter 5: Vulnearbility Analysis](_sites/c05.md)
+6. [Chapter 6: System Hacking](_sites/c06.md)
+
+
+## Blog
+
+[test post](_posts/2021-02-26-test.md)
