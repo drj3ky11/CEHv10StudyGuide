@@ -1,6 +1,6 @@
-# CEHv10_WIKI
+# CEHv10
 
-### *One Wiki to rule them all one wiki to find them, one wiki to bring them all and in the darkness bind them.*
+## *One Wiki to rule them all one wiki to find them, one wiki to bring them all and in the darkness bind them.*
 
 # Welcome to the **Certified Ethical Hacking Wiki**!!
 
@@ -18,7 +18,3 @@ Pd.: sorry for my bad English
 5. [Chapter 5: Vulnearbility Analysis](chapt/c05.md)
 6. [Chapter 6: System Hacking](chapt/c06.md)
 
-
-## Blog
-
-[test post](_posts/2021-02-26-test.md)
