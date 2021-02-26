@@ -12,5 +12,5 @@ Hacker Complete Training Guide with Practice Labs](https://www.amazon.es/CEH-v10
 Pd.: sorry for my bad English
 
 1. [Chapter 01: Introduction to Ethical Hacking](_posts/2021-02-26-c01.md)
-2. Not charg
+2. Not charg4
 3. [Chapter03: Scanning Networks](_posts/Chapter03:-Scanning-Networks.md)
